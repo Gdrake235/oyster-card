@@ -1,28 +1,14 @@
 require 'oyster'
-describe OysterCard do
-  describe '#initialize' do
-    it 'has a default of zero' do
-      expect(subject.balance).to eq 0
-    end
+describe Oystercard do
+  it 'has a balance of zero' do
+    expect(subject.balance).to eq(0)
   end
-  
-  describe '#top_up' do 
-    it 'top_up' do
-      oyster = OysterCard.new
-      oyster.top_up(10)
-      expect(oyster.balance).to eq(10)
-      end 
-    
-    it 'adds amount to balance' do
-      oyster = OysterCard.new(5)
-      oyster.top_up(10)
-     expect(oyster.balance).to eq(15)
-    end
+  describe '#top_up' do
 
-    it 'has max balance £90' do
-      maximum_balance = OysterCard::MAXIMUM_BALANCE
-      oyster = OysterCard.new(maximum_balance)
-      expect{oyster.top_up(1)}.to raise_error 'exceeded balance of £90'
+    it { is_expected.to respond_to(:top_up).with(1).argument }
+  
+    it 'can top up the balance' do
+      expect{ subject.top_up 1 }.to change{ subject.balance }.by 1
     end
   end
 end
