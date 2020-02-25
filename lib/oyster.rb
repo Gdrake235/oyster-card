@@ -4,6 +4,8 @@ class Oystercard
 
   def initialize
     @balance = 0
+    @in_use = false
+    
   end
   def top_up(amount)
     @balance = @balance + amount
@@ -16,6 +18,18 @@ class Oystercard
     @balance -= amount
   end
   def in_journey?
-    false
+   return  @in_use ? true : false
   end
+  def touch_in
+    fail "insufficient amount on card" if balance < 1
+    @in_use = true
+  end
+  def touch_out
+    @in_use = false
+  end
+  
 end
+
+#it 'can touch_in' do
+ # subject.touch_in
+ # expect(subject).to be_in_journey
