@@ -17,14 +17,14 @@ describe Oystercard do
     end
   end
 
-  describe '#deduct' do
-    it { is_expected.to respond_to(:deduct).with(1).argument }
-    
-    it 'deducts an amount from the balance' do
-      subject.top_up(20)
-        expect{ subject.deduct 3}.to change{ subject.balance }.by -3
-    end
-  end
+  #describe '#deduct' do
+ #   it { is_expected.to respond_to(:deduct).with(1).argument }
+  #  
+  #  it 'deducts an amount from the balance' do
+  #    subject.top_up(20)
+  #      expect{ subject.deduct 3}.to change{ subject.balance }.by -3
+  #  end
+  #end
 
   describe "#journey" do
     it 'is initially not a journey' do
@@ -47,4 +47,5 @@ describe Oystercard do
       expect{ subject.touch_in }.to raise_error "insufficient amount on card"
     end
   end
+  
 end
