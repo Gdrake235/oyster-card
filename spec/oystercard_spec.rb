@@ -31,10 +31,12 @@ describe Oystercard do
       expect(subject).not_to be_in_journey
     end
     it "can touch in" do
+      subject.top_up(5)
       subject.touch_in
         expect(subject.in_journey?).to eq(true)
     end
     it "can touch out" do
+      subject.top_up(5)
       subject.touch_in
       subject.touch_out
         expect(subject.in_journey?).to eq(false)
