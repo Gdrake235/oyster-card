@@ -7,6 +7,14 @@ describe Oystercard do
     expect(subject.entry_station).to eq station
 
   end
+  let(:entry_station){ double :station}
+  let(:exit_station){double :station}
+  it 'stores exit station' do
+    subject.entry_station(touch_in)
+    subject.exit_station(touch_out)
+    expect(subject.exit_station).to eq exit_station
+  end
+
   it 'has a balance of zero' do
     expect(subject.balance).to eq(0)
   end
