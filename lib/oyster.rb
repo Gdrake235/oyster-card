@@ -18,7 +18,7 @@ class Oystercard
   def in_journey?
    return  @in_use ? true : false
   end
-  def touch_in
+  def touch_in(station)
     fail "insufficient amount on card" if balance < 1
     @in_use = true
   end
