@@ -34,8 +34,8 @@ class Oystercard
   def station
     @entry_station
   end
-  def journeys
-    @journeys
+  def journey
+    
   end
   private
   def deduct(amount)
