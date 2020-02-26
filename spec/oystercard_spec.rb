@@ -16,6 +16,8 @@ describe Oystercard do
     expect(subject.exit_station).to eq exit_station
   end
 
+  
+
   it 'has a balance of zero' do
     expect(subject.balance).to eq(0)
   end
@@ -62,6 +64,10 @@ describe Oystercard do
     it "will not touch in if below minimum amount" do
       expect{ subject.touch_in(station) }.to raise_error "insufficient amount on card"
     end
+  end
+
+  it "has an empty list of journeys by default" do
+    expect(subject.journeys).to be_empty
   end
   
 end
