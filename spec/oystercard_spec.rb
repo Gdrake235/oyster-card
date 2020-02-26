@@ -3,8 +3,8 @@ describe Oystercard do
   let(:station){ double :station }
   it 'stores the entry station' do
     subject.top_up(5)
-    subject.touch_in(station)
-    expect(subject.entry_station).to eq station
+    subject.touch_in(entry_station)
+    expect(subject.entry_station).to eq entry_station
 
   end
   let(:entry_station){ double :station}
@@ -56,19 +56,19 @@ describe Oystercard do
     end
     it "can touch in" do
       subject.top_up(5)
-      subject.touch_in(station)
+      subject.touch_in(entry_station)
         expect(subject.in_journey?).to eq(true)
     end
     it "can touch out" do
       subject.top_up(5)
-      subject.touch_in(station)
-      subject.touch_out(station)
+      subject.touch_in(entry_station)
+      subject.touch_out(exit_station)
         expect(subject.in_journey?).to eq(false)
     end
   end
   describe "#minumum" do
     it "will not touch in if below minimum amount" do
-      expect{ subject.touch_in(station) }.to raise_error "insufficient amount on card"
+      expect{ subject.touch_in(entry_station) }.to raise_error "insufficient amount on card"
     end
   end
 
