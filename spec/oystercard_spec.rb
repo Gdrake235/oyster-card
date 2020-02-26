@@ -10,8 +10,9 @@ describe Oystercard do
   let(:entry_station){ double :station}
   let(:exit_station){double :station}
   it 'stores exit station' do
-    subject.entry_station(touch_in)
-    subject.exit_station(touch_out)
+    subject.top_up(5)
+    subject.touch_in(entry_station)
+    subject.touch_out(exit_station)
     expect(subject.exit_station).to eq exit_station
   end
 
@@ -53,7 +54,7 @@ describe Oystercard do
     it "can touch out" do
       subject.top_up(5)
       subject.touch_in(station)
-      subject.touch_out
+      subject.touch_out(station)
         expect(subject.in_journey?).to eq(false)
     end
   end
