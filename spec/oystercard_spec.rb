@@ -2,6 +2,7 @@ require 'oyster'
 describe Oystercard do
   let(:station){ double :station }
   it 'stores the entry station' do
+    subject.top_up(5)
     subject.touch_in(station)
     expect(subject.entry_station).to eq station
 
